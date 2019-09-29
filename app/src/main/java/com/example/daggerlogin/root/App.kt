@@ -12,7 +12,7 @@ class App : Application() {
 
         component = DaggerApplicationComponent.builder()
             .applicationModule(ApplicationModule(this))
-//            .loginModule(LoginModule())
+            .loginModule(LoginModule())
             .build()
     }
 

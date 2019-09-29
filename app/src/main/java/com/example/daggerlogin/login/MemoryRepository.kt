@@ -1,11 +1,24 @@
 package com.example.daggerlogin.login
 
 class MemoryRepository : LoginRepository {
-    override fun saveUser() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    private var user: User? = null
+
+    override fun saveUser(user: User) {
+        this.user = getUser()
+        this.user = user
     }
 
-    override fun getUser(): User {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    override fun getUser(): User = run {
+//        user = User(0, "Antonio", "Banderas")
+//        user
+//    }
+
+    override fun getUser(): User{
+        if(user == null) {
+            user = User(0, "Antonio", "Banderas")
+            return user!!
+        }
+        return user!!
     }
 }
