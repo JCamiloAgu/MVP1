@@ -19,8 +19,13 @@ class LoginActivityPresenter(private val model: LoginActivityMVP.Model) : LoginA
     }
 
     override fun getCurrentUser() {
-        val user = model.getUser()
-        view.setFirstName(user.firstName)
-        view.setLastName(user.lastName)
+        val user: User? = model.getUser()
+
+        if (user == null)
+            view.showUserNotAvailable()
+        else{
+            view.setFirstName(user.firstName)
+            view.setLastName(user.lastName)
+        }
     }
 }
